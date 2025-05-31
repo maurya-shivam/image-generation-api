@@ -1,0 +1,21 @@
+name: Docker Image CI
+run-name: ${{ github.actor }} is creating a docker image when there is a change in master
+
+on:
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  docker-build:
+    name: Build Docker Image when push to master/dev
+    runs-on: self-hosted
+    # runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    - run: pwd
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)

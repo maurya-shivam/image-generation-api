@@ -27,4 +27,3 @@ async def get_api_version() -> ApiVersion:
     Gives current api version
     '''
     return ApiVersion(api_version=apiversion)
-
